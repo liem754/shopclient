@@ -1,4 +1,4 @@
-import { getProductNext } from "api";
+import { getProductNext, updateCart } from "api";
 import { Button, Header, ModelRating, Slider, Tab } from "components";
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,6 +10,7 @@ import { updateRating } from "store/product/productSlice";
 import SliderProduct from "components/sliderproduct";
 import { Icons } from "ultils/icon";
 import Swal from "sweetalert2";
+import { getCurrent, updateCartt } from "store/user/asyncActions";
 const { IoIosArrowDropright } = Icons;
 function ProductDetail() {
   const param = useParams();
@@ -22,6 +23,7 @@ function ProductDetail() {
   const [quantity, setQuantity] = useState(1);
 
   const [activee, setActivee] = useState(productData?.images[0]);
+  const { mes } = useSelector((state) => state.user);
 
   useEffect(() => {
     dispatch(getProductbyId(param?.pid));
@@ -51,7 +53,20 @@ function ProductDetail() {
       Swal.fire("Thông báo !", "Sản phẩm cuối rồi !", "info");
     }
   }, [productData?._id]);
-  console.log(productData);
+  const handleUpdate = async () => {
+    const rs = await updateCart({
+      pid: productData?._id,
+      title: productData?.title,
+      price: productData?.price * quantity,
+      quantity: quantity,
+      thumb: productData?.images[0],
+    });
+    if (rs?.data?.err === 0) {
+      Swal.fire("Thông báo !", rs?.data?.mes, "success").then(() => {
+        dispatch(getCurrent());
+      });
+    }
+  };
   return (
     <div className="flex flex-col justify-center items-center my-12">
       <div className="w-4/5 flex gap-6">
@@ -82,7 +97,7 @@ function ProductDetail() {
             <h2 className=" text-2xl font-medium">{productData?.title}</h2>
             <div className=" border-2 border-gray-600 w-[40px]"></div>
             <h2 className=" text-red-600 text-2xl font-medium">
-              {VndFormat(productData?.price)}
+              {VndFormat(productData?.price * quantity)}
             </h2>
             <h2>Số lượng:</h2>
             <div className="flex  ">
@@ -101,6 +116,7 @@ function ProductDetail() {
               </h2>
             </div>
             <Button
+              Click={handleUpdate}
               text={"Thêm vào giỏ"}
               textColor={"text-white"}
               bgColor={"bg-red-600"}

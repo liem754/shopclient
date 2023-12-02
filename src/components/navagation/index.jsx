@@ -58,7 +58,7 @@ function Navigation() {
             <p>Sản phẩm</p>
             <FaChevronDown className="mt-1" size={"12px"} />
           </div>
-          <div className="bg-white child shadow-lg  text-black ">
+          <div className="bg-white child shadow-lg z-10  text-black ">
             {categorys?.map((item) => (
               <Link
                 to={`/product/${item?.value}`}

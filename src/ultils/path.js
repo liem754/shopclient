@@ -12,4 +12,8 @@ export const path = {
   REVIEWPRODUCT: ":title/:pid",
   LAYOUTPD: "product",
   CATEGORYPD: ":category",
+  USER: "user",
+  CART: "cart",
+  INFORMATION: "information",
+  HISTORY: "history",
 };

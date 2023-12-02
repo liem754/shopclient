@@ -28,8 +28,8 @@ const list = [
 ];
 function Home() {
   const [blogs, setBlogs] = useState([]);
-  const { productData, active } = useSelector((state) => state.product);
-  console.log(active);
+  const { isLogginned, data, mes } = useSelector((state) => state.user);
+
   const fetch = async (params) => {
     try {
       const rs = await getNews(params);

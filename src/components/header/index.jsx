@@ -2,7 +2,7 @@ import logo from "access/logo.png";
 import "./header.css";
 import Button from "components/button";
 import { useCallback, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "store/user/userSlice";
 import { getCurrent } from "store/user/asyncActions";
@@ -33,6 +33,7 @@ function Header() {
       clearTimeout(time);
     };
   }, [mes]);
+
   useEffect(() => {
     const time = setTimeout(() => {
       isLogginned && dispatch(getCurrent());
@@ -74,7 +75,10 @@ function Header() {
         <section className=" flex w-[40%] justify-end items-center ">
           {isLogginned ? (
             <div className="flex items-center gap-6">
-              <nav className="flex items-center gap-2">
+              <Link
+                to={`/user/information`}
+                className="flex items-center gap-2"
+              >
                 <img
                   src={data?.avatar}
                   alt=""
@@ -85,12 +89,14 @@ function Header() {
                     ? data?.name.charAt(0).toUpperCase() + data?.name.slice(1)
                     : ""}
                 </h2>
-              </nav>
+              </Link>
               <div className="flex items-center gap-2">
                 <h2>Giỏ hàng :</h2>
                 <h3 className="relative hover:scale-105 cursor-pointer">
                   <BsBag size={"30px"} />
-                  <span className="  absolute top-[6px] left-[10px]">0</span>
+                  <span className="  absolute top-[6px] left-[11px]">
+                    {data?.cart?.length}
+                  </span>
                 </h3>
               </div>
               <Button

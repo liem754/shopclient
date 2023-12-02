@@ -34,13 +34,9 @@ function Slider({ list, auto, active }) {
           //   el: ".swiper-pagination",
           clickable: true,
         }}
-        navigation={
-          auto
-            ? {
-                clickable: true,
-              }
-            : false
-        }
+        navigation={{
+          clickable: true,
+        }}
         loop={true}
         scrollbar={{ draggable: true }}
         autoplay={{

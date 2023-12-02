@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { Icons } from "ultils/icon";
 
 const {
@@ -60,19 +61,29 @@ function Footer() {
           <div className="border-2 w-[30%] mb-2"></div>
 
           <div className=" flex flex-col gap-2">
-            <h2 className="flex items-center gap-1 pb-2 border-b border-gray-600">
+            <Link
+              to={"/"}
+              className="flex cursor-pointer hover:text-red-500 items-center gap-1 pb-2 border-b border-gray-600"
+            >
               <IoHomeSharp />
               <p>Trang chủ</p>
-            </h2>
-            <h2 className="flex items-center gap-1 pb-2 border-b border-gray-600">
+            </Link>
+            <Link
+              to={`/product/Áo%20Thun%20Nữ`}
+              className="flex items-center gap-1 cursor-pointer hover:text-red-500 pb-2 border-b border-gray-600"
+            >
               <FaPhone />
               <p>Sản phẩm</p>
-            </h2>
+            </Link>
             {navi?.map((item) => (
-              <h2 className="flex items-center gap-1 pb-2 border-b border-gray-600">
+              <Link
+                key={item?.id}
+                to={item?.link}
+                className="flex items-center gap-1 pb-2 cursor-pointer hover:text-red-500 border-b border-gray-600"
+              >
                 {item?.icon}
                 <p>{item?.value}</p>
-              </h2>
+              </Link>
             ))}
           </div>
         </section>

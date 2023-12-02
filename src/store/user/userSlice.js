@@ -36,7 +36,6 @@ const userSlice = createSlice({
         state.data = null;
         state.mes = action.payload;
       });
-    //login
   },
 });
 

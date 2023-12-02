@@ -13,10 +13,15 @@ import {
   ProductDetail,
 } from "./pages/public";
 import LayoutProduct from "pages/public/layoutproduct";
+import { Information, LayoutUser } from "pages/user";
 function App() {
   return (
     <div className="App">
       <Routes>
+        <Route path={path.USER} element={<LayoutUser />}>
+          <Route path={path.INFORMATION} element={<Information />} />
+        </Route>
+
         <Route path={path.PUBLIC} element={<DefaultLayOut />}>
           <Route path={path.LOGIN} element={<Login />} />
           <Route path={path.HOME} element={<Home />} />

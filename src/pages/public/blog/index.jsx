@@ -1,8 +1,9 @@
 import { getNews } from "api/blog";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 function Blog() {
+  const [param] = useSearchParams();
   const [blogs, setBlogs] = useState([]);
   const fetch = async (params) => {
     try {
@@ -12,10 +13,12 @@ function Blog() {
       }
     } catch (error) {}
   };
+
   useEffect(() => {
-    fetch({ limit: 8 });
-  }, []);
-  console.log(blogs);
+    const query = {};
+    for (let i of param) query[i[0]] = i[1];
+    fetch({ limit: 8, ...query });
+  }, [param]);
   return (
     <div className="flex flex-col gap-4">
       {blogs?.map((item) => (

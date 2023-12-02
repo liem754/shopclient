@@ -13,5 +13,17 @@ export const validate = (payload, setInvalid) => {
       invalid++;
     }
   });
+  feild.forEach((item) => {
+    if (!item[1].includes("@gmail.com") && item[0] === "email") {
+      setInvalid((pre) => [
+        ...pre,
+        {
+          name: item[0],
+          messeger: "Email không hợp lệ !",
+        },
+      ]);
+      invalid++;
+    }
+  });
   return invalid;
 };

@@ -38,3 +38,42 @@ export const apiGetOne = () =>
       reject(error.response);
     }
   });
+export const contact = (data) =>
+  new Promise(async (resolve, reject) => {
+    try {
+      const rs = await axios({
+        method: "post",
+        url: "/api/user/contact",
+        data,
+      });
+      resolve(rs);
+    } catch (error) {
+      reject(error.response);
+    }
+  });
+export const updateCart = (data) =>
+  new Promise(async (resolve, reject) => {
+    try {
+      const rs = await axios({
+        method: "put",
+        url: "/api/user/cart",
+        data,
+      });
+      resolve(rs);
+    } catch (error) {
+      reject(error.response);
+    }
+  });
+export const deleteCart = (data) =>
+  new Promise(async (resolve, reject) => {
+    try {
+      const rs = await axios({
+        method: "put",
+        url: "/api/user/deletecart",
+        data,
+      });
+      resolve(rs);
+    } catch (error) {
+      reject(error.response);
+    }
+  });
