@@ -1,0 +1,41 @@
+.far {
+  position: relative;
+}
+.child {
+  width: 200px;
+  position: absolute;
+  top: 100%;
+  left: -10px;
+  display: none;
+}
+
+.child:hover {
+  display: flex;
+  flex-direction: column;
+}
+
+.child::after {
+  content: "";
+  position: absolute;
+  top: -11px;
+  left: 40px;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid #fff;
+}
+.child::before {
+  content: "";
+  position: absolute;
+  top: -22px;
+  left: -2px;
+  width: 200px;
+  height: 40px;
+  background-color: transparent;
+}
+
+.hove:hover ~ .child {
+  display: flex;
+  flex-direction: column;
+}

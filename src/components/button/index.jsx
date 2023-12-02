@@ -11,13 +11,14 @@ function Button({
   text,
   hover,
   textCenter,
+  radius,
 }) {
   return (
     <button
       onClick={Click}
       className={`${
         full && "w-full"
-      } ${pd} ${textColor} ${textCenter} ${bgColor} ${round} ${border} outline-none ${hover}`}
+      } ${pd} ${textColor} ${textCenter} ${bgColor} ${round} ${radius} ${border} outline-none ${hover}`}
     >
       {text}
     </button>

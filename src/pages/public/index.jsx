@@ -1,2 +1,10 @@
 export { default as DefaultLayOut } from "./default";
 export { default as Login } from "./login";
+export { default as Home } from "./home";
+export { default as LayoutBlog } from "./layoutblog";
+export { default as Blog } from "./blog";
+export { default as BlogReview } from "./blogreview";
+export { default as ProductCT } from "./product";
+export { default as ProductDetail } from "./productdetail";
+export { default as Introduce } from "./introduce";
+export { default as Contact } from "./contact";
