@@ -3,7 +3,7 @@ import { memo } from "react";
 function BlogItem({ img, title, time, description }) {
   return (
     <div className="w-full flex items-center flex-col shadow-lg h-full">
-      <img src={img} className="w-full h-[330px]" alt="" />
+      <img src={img} className="w-full h-[350px]" alt="" />
       <section className="p-3 ">
         <h2 className=" font-medium mb-1">{title}</h2>
         <span className="text-xs block text-gray-600 pb-2 border-b">

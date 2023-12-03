@@ -77,3 +77,55 @@ export const deleteCart = (data) =>
       reject(error.response);
     }
   });
+export const updateUser = (data) =>
+  new Promise(async (resolve, reject) => {
+    try {
+      const rs = await axios({
+        method: "put",
+        url: "/api/user/update",
+        data,
+      });
+      resolve(rs);
+    } catch (error) {
+      reject(error.response);
+    }
+  });
+export const createOrder = (data) =>
+  new Promise(async (resolve, reject) => {
+    try {
+      const rs = await axios({
+        method: "post",
+        url: "/api/user/order",
+        data,
+      });
+      resolve(rs);
+    } catch (error) {
+      reject(error.response);
+    }
+  });
+export const getOrders = (params) =>
+  new Promise(async (resolve, reject) => {
+    try {
+      const rs = await axios({
+        method: "get",
+        url: "/api/user/all-order",
+        params,
+      });
+      resolve(rs);
+    } catch (error) {
+      reject(error.response);
+    }
+  });
+export const updateOrders = (data) =>
+  new Promise(async (resolve, reject) => {
+    try {
+      const rs = await axios({
+        method: "put",
+        url: "/api/user/update-status",
+        data,
+      });
+      resolve(rs);
+    } catch (error) {
+      reject(error.response);
+    }
+  });

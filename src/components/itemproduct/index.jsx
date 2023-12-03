@@ -19,6 +19,8 @@ function ItemProduct({ img, title, id, price, css }) {
       price,
       quantity: 1,
       thumb: img[0],
+      color: "đen",
+      size: "M",
     });
     if (rs?.data?.err === 0) {
       Swal.fire("Thông báo !", rs?.data?.mes, "success").then(() => {
@@ -34,9 +36,8 @@ function ItemProduct({ img, title, id, price, css }) {
       });
     }
   };
-
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center shadow-lg pb-4">
       <Link
         to={`/${slugify(title, {
           lower: true, // Chuyển đổi thành chữ thường
@@ -46,9 +47,9 @@ function ItemProduct({ img, title, id, price, css }) {
         onMouseLeave={() => setImage(0)}
         className={` ${css} flex flex-col items-center `}
       >
-        <img src={img[image]} className="w-full" alt="ảnh sản phẩm" />
-        <section className="p-2 flex flex-col h-[80px] justify-between items-center">
-          <h2 className=" w-full text-center text-md">{title}</h2>
+        <img src={img[image]} className="w-full h-[330px]" alt="ảnh sản phẩm" />
+        <section className="p-2 flex flex-col h-[90px] justify-between items-center">
+          <h2 className=" w-full text-center text-md line-clamp-2 ">{title}</h2>
           <span className="text-red-600">{VndFormat(price)}</span>
         </section>
       </Link>

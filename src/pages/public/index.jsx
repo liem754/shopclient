@@ -8,3 +8,4 @@ export { default as ProductCT } from "./product";
 export { default as ProductDetail } from "./productdetail";
 export { default as Introduce } from "./introduce";
 export { default as Contact } from "./contact";
+export { default as Pay } from "./pay";

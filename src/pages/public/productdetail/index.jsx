@@ -21,6 +21,9 @@ function ProductDetail() {
   );
   const [active, setActives] = useState("");
   const [quantity, setQuantity] = useState(1);
+  const [color, setColor] = useState("đen");
+
+  const [size, setSize] = useState("M");
 
   const [activee, setActivee] = useState(productData?.images[0]);
   const { mes } = useSelector((state) => state.user);
@@ -60,6 +63,8 @@ function ProductDetail() {
       price: productData?.price * quantity,
       quantity: quantity,
       thumb: productData?.images[0],
+      color: color,
+      size: size,
     });
     if (rs?.data?.err === 0) {
       Swal.fire("Thông báo !", rs?.data?.mes, "success").then(() => {
@@ -93,27 +98,98 @@ function ProductDetail() {
           </div>
         </section>
         <section className="flex  gap-4 justify-between w-[50%] ">
-          <div className="flex flex-col gap-4 ">
+          <div className="flex flex-col gap-4 w-full ">
             <h2 className=" text-2xl font-medium">{productData?.title}</h2>
             <div className=" border-2 border-gray-600 w-[40px]"></div>
             <h2 className=" text-red-600 text-2xl font-medium">
               {VndFormat(productData?.price * quantity)}
             </h2>
-            <h2>Số lượng:</h2>
-            <div className="flex  ">
-              <h2
-                onClick={() => quantity > 1 && setQuantity(quantity - 1)}
-                className="py-2 px-4 border border-black cursor-pointer bg-gray-100 hover:bg-gray-200"
-              >
-                -
-              </h2>
-              <h2 className="py-2 px-5 border-y-2">{quantity}</h2>
-              <h2
-                onClick={() => setQuantity(quantity + 1)}
-                className="py-2 px-4 border border-black cursor-pointer bg-gray-100 hover:bg-gray-200"
-              >
-                +
-              </h2>
+
+            <div className="flex flex-col gap-3 w-full">
+              <h2>Màu:</h2>
+              <div className=" flex items-center gap-8 w-full ">
+                <h2
+                  onClick={() => setColor("đen")}
+                  className={`py-3 bg-black ${
+                    color === "đen"
+                      ? "scale-[1.1] border-double border-4 border-indigo-600"
+                      : "hover:scale-105"
+                  }   text-white  text-center px-3 cursor-pointer rounded-[50%] `}
+                >
+                  đen
+                </h2>
+                <h2
+                  onClick={() => setColor("trắng")}
+                  className={`${
+                    color === "trắng"
+                      ? "scale-[1.1] border-double border-4 border-indigo-600"
+                      : "hover:scale-105"
+                  } py-3 bg-white border px-2  text-center cursor-pointer border-black rounded-[50%] `}
+                >
+                  trắng
+                </h2>
+                <h2
+                  onClick={() => setColor("xanh")}
+                  className={`${
+                    color === "xanh"
+                      ? "scale-[1.1] border-double border-4 border-indigo-600"
+                      : "hover:scale-105"
+                  } py-3 bg-green-700 text-white px-2 text-center cursor-pointer rounded-[50%]`}
+                >
+                  xanh
+                </h2>
+              </div>
+            </div>
+            <div className="flex flex-col gap-3 w-full">
+              <h2>Size:</h2>
+              <div className=" flex items-center gap-8 w-full ">
+                <h2
+                  onClick={() => setSize("M")}
+                  className={`py-2  ${
+                    size === "M"
+                      ? "scale-[1.1]  border-2 border-indigo-600"
+                      : "hover:scale-105"
+                  }  sc  w-[12%] text-center cursor-pointer border border-black `}
+                >
+                  M
+                </h2>
+                <h2
+                  onClick={() => setSize("L")}
+                  className={`${
+                    size === "L"
+                      ? "scale-[1.1]  border-2 border-indigo-600"
+                      : "hover:scale-105"
+                  } py-2  border w-[12%] text-center cursor-pointer border-black  `}
+                >
+                  L
+                </h2>
+                <h2
+                  onClick={() => setSize("XL")}
+                  className={`${
+                    size === "XL"
+                      ? "scale-[1.1]  border-2 border-indigo-600"
+                      : "hover:scale-105"
+                  } py-2   w-[12%] text-center cursor-pointer border border-black `}
+                >
+                  XL
+                </h2>
+              </div>
+              <h2>Số lượng:</h2>
+              <div className="flex  ">
+                <h2
+                  onClick={() => quantity > 1 && setQuantity(quantity - 1)}
+                  className="py-2 px-4 border border-black cursor-pointer bg-gray-100 hover:bg-gray-200"
+                >
+                  -
+                </h2>
+                <h2 className="py-2 px-5 border-y-2">{quantity}</h2>
+                <h2
+                  onClick={() => setQuantity(quantity + 1)}
+                  className="py-2 px-4 border border-black cursor-pointer bg-gray-100 hover:bg-gray-200"
+                >
+                  +
+                </h2>
+              </div>
             </div>
             <Button
               Click={handleUpdate}

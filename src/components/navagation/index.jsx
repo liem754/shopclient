@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { memo, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import { getCategory } from "store/product/asyncActions";
@@ -38,7 +38,6 @@ function Navigation() {
   useEffect(() => {
     dispatch(getCategory());
   }, []);
-  console.log(categorys);
   return (
     <div className=" flex justify-center items-center bg-black text-white ">
       <nav className=" w-[75%] flex items-center gap-4 text-md font-medium">
@@ -90,4 +89,4 @@ function Navigation() {
   );
 }
 
-export default Navigation;
+export default memo(Navigation);

@@ -6,10 +6,10 @@ function LayoutUser() {
   return (
     <div className="">
       <div className="flex gap-4">
-        <div className="w-[22%]">
+        <div className="w-[20%]">
           <SideBar />
         </div>
-        <div className="w-[77%]">
+        <div className="w-[80%]">
           <Outlet />
         </div>
       </div>

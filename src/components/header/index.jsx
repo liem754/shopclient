@@ -77,24 +77,27 @@ function Header() {
             <div className="flex items-center gap-6">
               <Link
                 to={`/user/information`}
-                className="flex items-center gap-2"
+                className="flex items-center gap-2 relative "
               >
                 <img
                   src={data?.avatar}
                   alt=""
-                  className="w-[40px] h-[40px] rounded-[50%]"
+                  className="w-[40px] h-[40px] rounded-[50%] cha"
                 />
-                <h2>
+                <h2 className="te font-medium">
                   {data?.name
                     ? data?.name.charAt(0).toUpperCase() + data?.name.slice(1)
                     : ""}
+                </h2>
+                <h2 className=" absolute top-[110%] -left-4 p-3 shadow-xl w-[110px] rounded-md text-white font-medium hidden bg-blue-500 text-xs hov">
+                  Xem tài khoản
                 </h2>
               </Link>
               <div className="flex items-center gap-2">
                 <h2>Giỏ hàng :</h2>
                 <h3 className="relative hover:scale-105 cursor-pointer">
                   <BsBag size={"30px"} />
-                  <span className="  absolute top-[6px] left-[11px]">
+                  <span className="  absolute top-[8px] text-sm left-[11px]">
                     {data?.cart?.length}
                   </span>
                 </h3>

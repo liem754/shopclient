@@ -19,6 +19,8 @@ function ProductReview({ img, title, id, price, css }) {
       price,
       quantity: 1,
       thumb: img[0],
+      color: "đen",
+      size: "M",
     });
     if (rs?.data?.err === 0) {
       Swal.fire("Thông báo !", rs?.data?.mes, "success").then(() => {

@@ -16,4 +16,5 @@ export const path = {
   CART: "cart",
   INFORMATION: "information",
   HISTORY: "history",
+  PAY: "pay",
 };

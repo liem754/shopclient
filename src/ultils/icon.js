@@ -13,6 +13,7 @@ import {
 } from "react-icons/md";
 import { FaSquareFacebook } from "react-icons/fa6";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import { TfiFaceSad } from "react-icons/tfi";
 export const Icons = {
   FaSearch,
   IoIosGift,
@@ -34,4 +35,5 @@ export const Icons = {
   AiFillStar,
   AiOutlineStar,
   IoIosArrowDropright,
+  TfiFaceSad,
 };

@@ -9,21 +9,26 @@ import {
   Introduce,
   LayoutBlog,
   Login,
+  Pay,
   ProductCT,
   ProductDetail,
 } from "./pages/public";
 import LayoutProduct from "pages/public/layoutproduct";
-import { Information, LayoutUser } from "pages/user";
+import { Cart, History, Information, LayoutUser } from "pages/user";
 function App() {
   return (
     <div className="App">
       <Routes>
         <Route path={path.USER} element={<LayoutUser />}>
           <Route path={path.INFORMATION} element={<Information />} />
+          <Route path={path.CART} element={<Cart />} />
+          <Route path={path.HISTORY} element={<History />} />
         </Route>
 
         <Route path={path.PUBLIC} element={<DefaultLayOut />}>
           <Route path={path.LOGIN} element={<Login />} />
+          <Route path={path.PAY} element={<Pay />} />
+
           <Route path={path.HOME} element={<Home />} />
           <Route path={path.INTRODUTE} element={<Introduce />} />
           <Route path={path.CONTACT} element={<Contact />} />

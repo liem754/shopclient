@@ -28,7 +28,11 @@ function SideBar() {
   return (
     <div className="flex flex-col gap-4 py-6 border-r h-screen">
       <section className="flex items-center gap-4 ml-6">
-        <img src={data?.avatar} alt="" className="w-[50px] rounded-[50%]" />
+        <img
+          src={data?.avatar}
+          alt=""
+          className="w-[50px] h-[50px] rounded-[50%]"
+        />
         <h2 className="text-2xl font-medium">{data?.name}</h2>
       </section>
       <section className=" flex flex-col mt-5">
