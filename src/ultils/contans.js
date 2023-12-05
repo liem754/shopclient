@@ -1,3 +1,14 @@
+import { Icons } from "./icon";
+
+const {
+  IoHomeSharp,
+  PiShirtFoldedFill,
+  MdContacts,
+  MdFiberNew,
+  MdPayments,
+  FaChevronDown,
+  MdOutlinePreview,
+} = Icons;
 export const voteOption = [
   {
     id: 1,
@@ -20,5 +31,22 @@ export const voteOption = [
   {
     id: 5,
     title: "Perfect",
+  },
+];
+export const navi = [
+  {
+    icon: <MdOutlinePreview />,
+    value: "Giới thiệu",
+    link: "/introduce",
+  },
+  {
+    icon: <MdContacts />,
+    value: "Liên hệ",
+    link: "/contact",
+  },
+  {
+    icon: <MdFiberNew />,
+    value: "Tin tức",
+    link: "/blog",
   },
 ];

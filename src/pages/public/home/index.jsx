@@ -3,10 +3,11 @@ import bn2 from "access/banner2.jpg";
 import bn3 from "access/bn3.png";
 import bn4 from "access/bn4.png";
 import bn5 from "access/bn5.png";
+import bn6 from "access/parallax.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { getNews } from "api/blog";
-import { BlogItem, ItemProduct, Slider } from "components";
+import { BlogItem, ItemProduct, ParallaxItem, Slider } from "components";
 import SliderProduct from "components/sliderproduct";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -105,7 +106,18 @@ function Home() {
           </div>
         </section>
       </div>
-      <div className="mt-10 flex flex-col justify-center items-center py-10 mb-10 gap-9">
+      <div className="w-full h-[500px] mt-32">
+        <ParallaxItem
+          img={bn6}
+          content={
+            <div className="flex flex-col justify-center items-center gap-2">
+              <h2 className="text-2xl font-bold">MOSASHOP</h2>
+              <h2 className="text-2xl font-bold">FASHION</h2>
+            </div>
+          }
+        />
+      </div>
+      <div className="mt-2 flex flex-col justify-center items-center py-10 mb-10 gap-9">
         <section className="w-[75%]">
           <h1 className="border-dashed font-semibold text-xl border-2 border-blue-700 p-3 flex items-center gap-2">
             <IoIosGift size={"30px"} />

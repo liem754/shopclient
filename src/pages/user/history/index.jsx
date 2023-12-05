@@ -90,10 +90,10 @@ function History() {
                     : "bg-white text-sm dark:border-neutral-500 border-b border-black dark:bg-neutral-600"
                 } `}
               >
-                <td className=" whitespace-nowrap px-2 py-2  border text-center">
+                <td className=" whitespace-nowrap px-2 py-2 border-black  border text-center">
                   {index + 1}
                 </td>
-                <td className="whitespace-nowrap px-2 py-2 border  ">
+                <td className="whitespace-nowrap px-2 py-2 border-black border  ">
                   <div className="flex flex-col gap-2 items-start">
                     {item?.products?.map((el) => (
                       <div className=" text-sm flex gap-1 justify-between">
@@ -110,7 +110,7 @@ function History() {
                     ))}
                   </div>
                 </td>
-                <td className=" whitespace-nowrap px-2 py-2 border text-center">
+                <td className=" whitespace-nowrap px-2 py-2 border-black border text-center">
                   {item?.pay === "Thanh toán Online" &&
                   item?.status === "Đang chờ xử lý" ? (
                     <div className="flex flex-col gap-1">
@@ -129,10 +129,10 @@ function History() {
                     )} `}</span>
                   )}
                 </td>
-                <td className="whitespace-nowrap px-2  py-2 border text-center">
+                <td className="whitespace-nowrap px-2 border-black  py-2 border text-center">
                   {item?.status}
                 </td>
-                <td className="whitespace-nowrap  px-2 py-2 border text-center">
+                <td className="whitespace-nowrap border-black  px-2 py-2 border text-center">
                   <div className="flex flex-col gap-1">
                     <div className="flex items-center gap-1">
                       <h2 className=" font-medium">Địa chỉ :</h2>
@@ -150,26 +150,26 @@ function History() {
                   </div>
                 </td>
 
-                <td className="whitespace-nowrap px-2 py-2 border text-center">
+                <td className="whitespace-nowrap px-2 py-2 border-black border text-center">
                   {item?.status === "Đã hủy" ||
                   item?.status === "Thành công" ? (
                     <button
                       onClick={() => handleupdate(item?._id, "Đang chờ xử lý")}
-                      className="py-1 px-3 bg-blue-600 text-white rounded-md"
+                      className="py-1 px-3 hover:scale-105 bg-blue-600 text-white rounded-md"
                     >
                       Mua lại
                     </button>
                   ) : item?.status === "Đang chờ xử lý" ? (
                     <button
                       onClick={() => handleupdate(item?._id, "Đã hủy")}
-                      className="py-1 px-3 bg-red-600 text-white rounded-md"
+                      className="py-1 px-3 hover:scale-105 bg-red-600 text-white rounded-md"
                     >
                       Hủy
                     </button>
                   ) : item?.status === "Đã giao hàng" ? (
                     <button
                       onClick={() => handleupdate(item?._id, "Thành công")}
-                      className="py-1 px-3 bg-blue-600 text-white rounded-md"
+                      className="py-1 px-3 hover:scale-105 bg-blue-600 text-white rounded-md"
                     >
                       Đã nhận hàng
                     </button>

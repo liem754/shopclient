@@ -1,10 +1,12 @@
-import { deleteCart } from "api";
+import { deleteCart, getProduct, updateCart } from "api";
 import { Button } from "components";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { getProductbyId } from "store/product/asyncActions";
 import { getCurrent } from "store/user/asyncActions";
 import Swal from "sweetalert2";
+import { VndFormat } from "ultils/format";
 import { Icons } from "ultils/icon";
 
 const { TfiFaceSad } = Icons;
@@ -15,6 +17,8 @@ function Cart() {
   const [indexx, setIndexx] = useState("");
 
   const { data } = useSelector((state) => state.user);
+  const { productData } = useSelector((state) => state.product);
+
   const [quantity, setQuantity] = useState(0);
   const handleDelete = async (id) => {
     setIndexx(id);
@@ -27,6 +31,50 @@ function Cart() {
       });
     }
   };
+  const handleAdd = async (id, title, quantity, img, color, size) => {
+    const rss = await getProduct(id);
+
+    if (rss?.data?.err === 0) {
+      const rs = await updateCart({
+        pid: id,
+        title,
+        price: rss.data.productData?.price * (quantity + 1),
+        quantity: quantity + 1,
+        thumb: img,
+        color,
+        size,
+      });
+      if (rs?.data?.err === 0) {
+        Swal.fire("Thông báo !", rs?.data?.mes, "success").then(() => {
+          dispatch(getCurrent());
+          setQuantity(0);
+        });
+      }
+    }
+  };
+
+  const handleRedu = async (id, title, quantity, img, color, size) => {
+    const rss = await getProduct(id);
+
+    if (rss?.data?.err === 0) {
+      const rs = await updateCart({
+        pid: id,
+        title,
+        price: rss.data.productData?.price * (quantity - 1),
+        quantity: quantity - 1,
+        thumb: img,
+        color,
+        size,
+      });
+      if (rs?.data?.err === 0) {
+        Swal.fire("Thông báo !", rs?.data?.mes, "success").then(() => {
+          dispatch(getCurrent());
+        });
+      }
+    }
+  };
+
+  console.log(data?.cart);
   return (
     <div className="flex flex-col gap-10 p-8 justify-center items-center">
       <h2 className=" text-3xl font-bold  text-center">Giỏ Hàng</h2>
@@ -34,7 +82,11 @@ function Cart() {
       {data?.cart?.length > 0 ? (
         data?.cart?.map((item, index) => (
           <div className="flex gap-2 w-[80%] border-2 shadow-lg">
-            <img src={item?.thumb} alt="" className="w-[30%] h-[230px]" />
+            <img
+              src={item?.thumb}
+              alt=""
+              className="w-[30%] h-[250px] bg-cover"
+            />
             <div className="flex flex-col gap-2 p-3 w-[69%] justify-between">
               <div className="flex flex-col gap-4">
                 <section>
@@ -44,7 +96,7 @@ function Cart() {
                   <div className="flex flex-col gap-2">
                     <section className=" flex items-center gap-2">
                       <h3 className=" font-medium">Giá:</h3>
-                      <h2>{item?.price}</h2>
+                      <h2>{VndFormat(item?.price)}</h2>
                     </section>
 
                     <section className=" flex items-center gap-2">
@@ -61,25 +113,35 @@ function Cart() {
                       <h3 className=" font-medium">Số Lượng:</h3>
                       <div className="flex  ">
                         <h2
-                          onClick={() =>
-                            quantity > 1 &&
-                            setQuantity(
-                              quantity !== 0 ? quantity - 1 : item?.quantity - 1
-                            )
-                          }
+                          onClick={() => {
+                            item?.quantity > 1 &&
+                              handleRedu(
+                                item?.product,
+                                item?.title,
+                                item?.quantity,
+                                item?.thumb,
+                                item?.color,
+                                item?.size
+                              );
+                          }}
                           className="py-2 px-4 border border-black cursor-pointer bg-gray-100 hover:bg-gray-200"
                         >
                           -
                         </h2>
                         <h2 className="py-2 px-5 border-y-2">
-                          {quantity !== 0 ? quantity : item?.quantity}
+                          {item?.quantity}
                         </h2>
                         <h2
-                          onClick={() =>
-                            setQuantity(
-                              quantity !== 0 ? quantity + 1 : item?.quantity + 1
-                            )
-                          }
+                          onClick={() => {
+                            handleAdd(
+                              item?.product,
+                              item?.title,
+                              item?.quantity,
+                              item?.thumb,
+                              item?.color,
+                              item?.size
+                            );
+                          }}
                           className="py-2 px-4 border border-black cursor-pointer bg-gray-100 hover:bg-gray-200"
                         >
                           +

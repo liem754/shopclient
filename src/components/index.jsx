@@ -13,3 +13,5 @@ export { default as PagiItem } from "./pagiitem";
 export { default as Tab } from "./tabs";
 export { default as ModelRating } from "./ratingmodel";
 export { default as VoteBar } from "./votebar";
+export { default as ParallaxItem } from "./parallax";
+export { default as ScrollTop } from "./scrollTop";

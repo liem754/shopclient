@@ -29,21 +29,25 @@ function Pay() {
     }
   };
   useEffect(() => {
-    isSuccess &&
-      handleSave({
-        cart: data?.cart,
-        total: Math.round(
-          +data?.cart?.reduce((sum, item) => +item.price + sum, 0)
-        ),
-        address: payload?.address,
-        pay: iss ? "Thanh toán Online" : "Thanh toán khi nhận hàng",
-        transpost:
-          tran === 15000
-            ? "Vận chuyển thường VNPost Tiết Kiệm"
-            : tran === 30000
-            ? "Vận chuyển nhanh J&T Express"
-            : "Vận chuyển hỏa tốc SPX Instant",
-      });
+    if (payload?.address !== "") {
+      isSuccess &&
+        handleSave({
+          cart: data?.cart,
+          total: Math.round(
+            +data?.cart?.reduce((sum, item) => +item.price + sum, 0)
+          ),
+          address: payload?.address,
+          pay: iss ? "Thanh toán Online" : "Thanh toán khi nhận hàng",
+          transpost:
+            tran === 15000
+              ? "Vận chuyển thường VNPost Tiết Kiệm"
+              : tran === 30000
+              ? "Vận chuyển nhanh J&T Express"
+              : "Vận chuyển hỏa tốc SPX Instant",
+        });
+    } else {
+      Swal.fire("Thông báo !", "Vui lòng điền địa chỉ giao hàng !");
+    }
   }, [isSuccess]);
   return (
     <div className="h-auto flex justify-center items-center pb-10 pt-2">
@@ -96,10 +100,10 @@ function Pay() {
             </table>
           </div>
           <div className="flex flex-col gap-2 py-2 border-b-2">
-            <h2 className=" text-center font-medium text-2xl mb-2">
+            <h2 className=" text-center font-bold text-2xl mb-2">
               Phương thức vận chuyển
             </h2>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 font-medium">
               <input
                 type="checkbox"
                 checked={tran === 15000}
@@ -107,7 +111,7 @@ function Pay() {
               />
               <h2>Vận chuyển thường VNPost Tiết Kiệm (15000 đ)</h2>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 font-medium">
               <input
                 type="checkbox"
                 checked={tran === 30000}
@@ -115,7 +119,7 @@ function Pay() {
               />
               <h2>Vận chuyển nhanh J&T Express (30000 đ)</h2>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 font-medium">
               <input
                 type="checkbox"
                 checked={tran === 40000}
@@ -150,10 +154,10 @@ function Pay() {
             </div>
           </div>
           <div className=" w-[80%] mt-4">
-            <div className=" flex items-center gap-2 mb-2">
+            <div className=" flex items-center gap-2 mb-2 font-medium">
               <h2 className=" text-left">Địa chỉ :</h2>
               <h2 className="text-sm">
-                (Vui lòng nhập địa chỉ trước khi thanh toán){" "}
+                ( Vui lòng nhập địa chỉ trước khi thanh toán ! ){" "}
               </h2>
             </div>
             <input
@@ -207,12 +211,21 @@ function Pay() {
                 )}
               />
             ) : (
-              <button
-                onClick={() => setIsSuccess(true)}
-                className="py-2 px-6 bg-blue-600 text-white textlg"
-              >
-                Đặt hàng
-              </button>
+              <div className="flex flex-col gap-3">
+                <button
+                  onClick={() => setIsSuccess(true)}
+                  className="py-2 px-8 rounded-md hover:scale-105 bg-blue-600 text-white textlg"
+                >
+                  Đặt hàng
+                </button>
+                <h2>Bạn Muốn thay đổi sản phẩm ?</h2>
+                <button
+                  onClick={() => navigate("/user/cart")}
+                  className="py-2 px-8 rounded-md hover:scale-105 bg-gray-600 text-white textlg"
+                >
+                  Về giỏ hàng
+                </button>
+              </div>
             )}
           </div>
           {/* </div> */}

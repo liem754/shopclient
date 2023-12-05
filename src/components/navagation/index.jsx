@@ -1,9 +1,10 @@
-import { memo, useEffect } from "react";
+import { memo, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import { getCategory } from "store/product/asyncActions";
 import { Icons } from "ultils/icon";
 import "./navigation.css";
+import { navi } from "ultils/contans";
 const {
   IoHomeSharp,
   PiShirtFoldedFill,
@@ -14,33 +15,15 @@ const {
   MdOutlinePreview,
 } = Icons;
 
-const navi = [
-  {
-    icon: <MdOutlinePreview />,
-    value: "Giới thiệu",
-    link: "/introduce",
-  },
-  {
-    icon: <MdContacts />,
-    value: "Liên hệ",
-    link: "/contact",
-  },
-  {
-    icon: <MdFiberNew />,
-    value: "Tin tức",
-    link: "/blog",
-  },
-];
 function Navigation() {
   const dispatch = useDispatch();
   const { categorys } = useSelector((state) => state.product);
-
   useEffect(() => {
     dispatch(getCategory());
   }, []);
   return (
     <div className=" flex justify-center items-center bg-black text-white ">
-      <nav className=" w-[75%] flex items-center gap-4 text-md font-medium">
+      <nav className=" w-[75%] flex items-center gap-4 md:text-sm sm:hidden xs:hidden text-md font-medium">
         <NavLink
           to={"/"}
           className={({ isActive }) =>

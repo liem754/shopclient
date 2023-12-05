@@ -1,5 +1,10 @@
 import { BsBag } from "react-icons/bs";
-import { FaPhone, FaChevronDown, FaSearch } from "react-icons/fa";
+import {
+  FaPhone,
+  FaChevronDown,
+  FaSearch,
+  FaRegUserCircle,
+} from "react-icons/fa";
 import { FaIdCard, FaCarSide, FaPhoneVolume } from "react-icons/fa6";
 import { IoHomeSharp } from "react-icons/io5";
 import { PiShirtFoldedFill, PiHandbagDuotone } from "react-icons/pi";
@@ -12,14 +17,15 @@ import {
   MdOutlinePreview,
 } from "react-icons/md";
 import { FaSquareFacebook } from "react-icons/fa6";
-import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import { AiFillStar, AiOutlineStar, AiOutlineClose } from "react-icons/ai";
 import { TfiFaceSad } from "react-icons/tfi";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { PiShirtFolded } from "react-icons/pi";
 export const Icons = {
   FaSearch,
   IoIosGift,
   BsBag,
   FaIdCard,
-  FaCarSide,
   FaPhoneVolume,
   PiShirtFoldedFill,
   MdContacts,
@@ -36,4 +42,10 @@ export const Icons = {
   AiOutlineStar,
   IoIosArrowDropright,
   TfiFaceSad,
+  GiHamburgerMenu,
+  AiOutlineClose,
+  FaCarSide,
+
+  FaRegUserCircle,
+  PiShirtFolded,
 };

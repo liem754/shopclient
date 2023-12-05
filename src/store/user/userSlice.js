@@ -9,6 +9,7 @@ const userSlice = createSlice({
     isLoading: false,
     isRegister: false,
     mes: "",
+    han: false,
   },
   reducers: {
     logout: (state, action) => {
@@ -34,7 +35,7 @@ const userSlice = createSlice({
         state.isLoading = false;
 
         state.data = null;
-        state.mes = action.payload;
+        state.han = true;
       });
   },
 });

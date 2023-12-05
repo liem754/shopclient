@@ -32,25 +32,28 @@ function Footer() {
   const { categorys } = useSelector((state) => state.product);
 
   return (
-    <div className="bg-black py-10 text-white flex justify-center items-center">
-      <div className="w-[75%] flex justify-between gap-6 ">
+    <div className="bg-black py-10 text-white flex  justify-center items-center">
+      <div className="w-[75%] sm:w-[90%] md:w-[90%] xs:w-[90%] lg:w-[80%] xl:w-[80%] flex sm:flex-col xs:flex-col flex-row justify-between gap-6 ">
         <section className="flex flex-col gap-2 flex-1 ">
           <h2 className="  inline">LIÊN HỆ CHÚNG TÔI</h2>
           <div className="border-2 w-[30%] mb-2"></div>
           <div className=" flex flex-col gap-2">
-            <h2 className="flex items-center gap-1">
-              <IoHomeSharp size={"28px"} />
+            <h2 className="flex items-center gap-1 md:text-sm">
+              <IoHomeSharp
+                size={"28px"}
+                className=" sm:hidden xs:hidden md:hidden lg:hidden"
+              />
               <p>Louis Tower, Nguyễn Ảnh Thủ, Hóc Môn, TP Hồ Chí Minh</p>
             </h2>
-            <h2 className="flex items-center gap-1">
+            <h2 className="flex items-center gap-1 md:text-sm">
               <FaPhone />
               <p>0999 888 777</p>
             </h2>
-            <h2 className="flex items-center gap-1">
+            <h2 className="flex items-center gap-1 md:text-sm">
               <CiMail size={"18px"} />
               <p>abc@gmail.com</p>
             </h2>
-            <h2 className="flex items-center gap-1">
+            <h2 className="flex items-center gap-1 md:text-sm">
               <FaSquareFacebook />
               <p>liem pham</p>
             </h2>
@@ -60,7 +63,7 @@ function Footer() {
           <h2 className=" inline">LIÊN KẾT</h2>
           <div className="border-2 w-[30%] mb-2"></div>
 
-          <div className=" flex flex-col gap-2">
+          <div className=" flex flex-col gap-2 md:text-sm">
             <Link
               to={"/"}
               className="flex cursor-pointer hover:text-red-500 items-center gap-1 pb-2 border-b border-gray-600"
@@ -91,7 +94,7 @@ function Footer() {
           <h2 className=" inline">DANH MỤC SẢN PHẨM</h2>
           <div className="border-2 w-[30%] mb-2"></div>
 
-          <div className=" flex flex-col gap-2">
+          <div className=" flex flex-col gap-2 md:text-sm">
             {categorys?.map((item) => (
               <span
                 className=" hover:underline hover:underline-offset-2 cursor-pointer"

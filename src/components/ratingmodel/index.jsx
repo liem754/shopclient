@@ -26,18 +26,26 @@ function ModalRating({ handle, totalratings, total, pid }) {
         "info"
       );
     } else {
-      const rs = await ratings({
-        comment: comment,
-        star: choose,
-        pid,
-        updatedAt: Date.now(),
-      });
-      if (rs.data?.err === 0) {
-        Swal.fire("Thông báo !", rs.data.mes, "success").then(() => {
-          dispatch(updateRating(true));
-          setChoose(0);
-          setComment("");
+      if ((choose !== 0, comment !== "")) {
+        const rs = await ratings({
+          comment: comment,
+          star: choose,
+          pid,
+          updatedAt: Date.now(),
         });
+        if (rs.data?.err === 0) {
+          Swal.fire("Thông báo !", rs.data.mes, "success").then(() => {
+            dispatch(updateRating(true));
+            setChoose(0);
+            setComment("");
+          });
+        }
+      } else {
+        Swal.fire(
+          "Thông báo !",
+          "Vui Lòng nhập đầy đủ thông tin để đánh giá !",
+          "info"
+        );
       }
     }
   }, [comment, choose]);
@@ -46,7 +54,7 @@ function ModalRating({ handle, totalratings, total, pid }) {
     <div className=" flex justify-center to items-center  bg-black bg-opacity-60">
       <div className="bg-white flex flex-col items-center gap-2 py-4 w-full">
         <div className="flex flex-col gap-5 w-full">
-          <div className="border-4 py-6 px-2 flex sm:flex-row flex-col  justify-between">
+          <div className="border-4 py-6 px-2 flex sm:flex-col xs:flex-col items-center  justify-between">
             <div className="sm:w-[40%] w-full flex flex-col items-center gap-2 justify-center">
               <span className="text-lg font-medium">{`${totalratings}/5`}</span>
               <span className="flex gap-1">
@@ -77,6 +85,7 @@ function ModalRating({ handle, totalratings, total, pid }) {
           <div className=" w-full flex flex-col items-center gap-5">
             <h2 className="text-lg font-medium my-3">Đánh giá sản phẩm</h2>
             <textarea
+              placeholder="Để lại nhận xét ở đây"
               value={comment}
               onChange={(e) => setComment(e.target.value)}
               className="border border-gray-400 p-2 w-[80%]"
@@ -84,7 +93,10 @@ function ModalRating({ handle, totalratings, total, pid }) {
               id=""
               rows="7"
             ></textarea>
-            <h2>How do you like product ?</h2>
+            <h2>
+              How do you like product ? ( Bạn đánh giá sản phẩm bao nhiêu sao ?
+              )
+            </h2>
             <div className="flex items-center justify-center gap-6 w-full">
               {voteOption?.map((item) => (
                 <div

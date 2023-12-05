@@ -145,6 +145,7 @@ function Information() {
             bgColor={"bg-blue-600"}
             textColor={"text-white"}
             round={"rounded-md"}
+            hover={"hover:scale-[1.02] hover:bg-blue-700"}
           />
         )}
       </div>
