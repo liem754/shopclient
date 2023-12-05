@@ -10,22 +10,26 @@ import { getCurrent } from "store/user/asyncActions";
 function ProductReview({ img, title, id, price, css }) {
   const [image, setImage] = useState(0);
   const dispatch = useDispatch();
-  const { data } = useSelector((state) => state.user);
+  const { data, isLogginned } = useSelector((state) => state.user);
 
   const handle = useCallback(async () => {
-    const rs = await updateCart({
-      pid: id,
-      title,
-      price,
-      quantity: 1,
-      thumb: img[0],
-      color: "đen",
-      size: "M",
-    });
-    if (rs?.data?.err === 0) {
-      Swal.fire("Thông báo !", rs?.data?.mes, "success").then(() => {
-        dispatch(getCurrent());
+    if (isLogginned) {
+      const rs = await updateCart({
+        pid: id,
+        title,
+        price,
+        quantity: 1,
+        thumb: img[0],
+        color: "đen",
+        size: "M",
       });
+      if (rs?.data?.err === 0) {
+        Swal.fire("Thông báo !", rs?.data?.mes, "success").then(() => {
+          dispatch(getCurrent());
+        });
+      }
+    } else {
+      Swal.fire("Thông báo !", "Vui lòng đăng nhập !", "info");
     }
   }, [id]);
   const handleDelete = async () => {
