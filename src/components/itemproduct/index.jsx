@@ -15,8 +15,9 @@ function ItemProduct({ img, title, id, price, css }) {
   const { data, isLogginned } = useSelector((state) => state.user);
 
   const handle = useCallback(async () => {
-    setLoading(true);
     if (isLogginned) {
+      setLoading(true);
+
       const rs = await updateCart({
         pid: id,
         title,
