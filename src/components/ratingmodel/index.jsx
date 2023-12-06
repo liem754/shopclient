@@ -58,8 +58,8 @@ function ModalRating({ handle, totalratings, total, pid }) {
     <div className=" flex justify-center to items-center  bg-black bg-opacity-60">
       <div className="bg-white flex flex-col items-center gap-2 py-4 w-full">
         <div className="flex flex-col gap-5 w-full">
-          <div className="border-4 py-6 px-2 flex sm:flex-col xs:flex-col items-center  justify-between">
-            <div className="sm:w-[40%] w-full flex flex-col items-center gap-2 justify-center">
+          <div className="border-4 py-6 px-2 flex sm:flex-col md:gap-5 md:flex-col sm:gap-4 xs:gap-4 xs:flex-col items-center justify-between">
+            <div className="sm:w-[90%] w-full flex flex-col items-center gap-2 justify-center">
               <span className="text-lg font-medium">{`${totalratings}/5`}</span>
               <span className="flex gap-1">
                 {formatStar(totalratings).map((el, index) => (
@@ -70,7 +70,7 @@ function ModalRating({ handle, totalratings, total, pid }) {
               </span>
               <span className="lg:text-sm text-xs">{`${total?.length} reviewer`}</span>
             </div>
-            <div className="sm:w-[60%] w-full flex flex-col gap-2">
+            <div className="sm:w-[100%] w-full sm:ml-5 xs:ml-5 md:ml-5 flex flex-col gap-2">
               {Array.from(Array(5).keys())
                 .reverse()
                 .map((el, index) => (
@@ -92,7 +92,7 @@ function ModalRating({ handle, totalratings, total, pid }) {
               placeholder="Để lại nhận xét ở đây"
               value={comment}
               onChange={(e) => setComment(e.target.value)}
-              className="border border-gray-400 p-2 w-[80%]"
+              className="border border-gray-400 p-2 w-[80%] sm:w-[95%] xs:w-[95%] md:w-[95%]"
               name=""
               id=""
               rows="7"
@@ -109,7 +109,7 @@ function ModalRating({ handle, totalratings, total, pid }) {
                     else setChoose(null);
                   }}
                   key={item.id}
-                  className="flex flex-col text-center w-[9%] py-4 justify-center items-center gap-1 bg-gray-100 cursor-pointer"
+                  className="flex flex-col text-center w-[9%] sm:w-[15%] md:w-[15%] xs:w-[15%] py-4 justify-center items-center gap-1 bg-gray-100 cursor-pointer"
                 >
                   {Number(choose) && choose >= item.id ? (
                     <AiFillStar color="orange" />
@@ -148,9 +148,9 @@ function ModalRating({ handle, totalratings, total, pid }) {
                 Click={handleRatings}
                 text={"Submit"}
                 bgColor={"bg-red-600"}
-                textColor={"text-white"}
+                textColor={"text-white  hover:scale-105"}
                 pd={"py-2 px-36"}
-                radius={"round-lg"}
+                radius={"rounded-md"}
               />
             )}
           </div>

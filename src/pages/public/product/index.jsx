@@ -63,11 +63,11 @@ function ProductCT() {
   console.log(color);
   return (
     <div className="p-4">
-      <div className="flex justify-between items-center mb-4 border p-3">
+      <div className="flex justify-between flex-row xs:flex-col-reverse xs:gap-2 items-center mb-4 border p-3">
         <select
           name=""
           id=""
-          className=" cursor-pointer py-1 border-2 rounded-sm w-[20%]"
+          className=" cursor-pointer py-1 border-2 rounded-sm w-[20%] sm:w-[30%] xs:w-[80%]"
           onChange={(e) => handleon(e)}
         >
           <option value={""}>Chọn màu</option>
@@ -120,7 +120,10 @@ function ProductCT() {
       ) : (
         <div className="flex flex-wrap gap-4 mb-10">
           {products?.products?.map((item) => (
-            <div key={item?._id} className="w-[30%]">
+            <div
+              key={item?._id}
+              className="w-[30%] lg:w-[45%] md:w-[45%] sm:w-[45%] xs:w-[98%]"
+            >
               <ItemProduct
                 id={item?._id}
                 img={item?.images}

@@ -58,7 +58,7 @@ function History() {
         <table className="w-full">
           <thead className="border-b bg-gray-400 font-medium dark:border-neutral-500 dark:bg-neutral-600">
             <tr>
-              <th scope="col" className="px-2 py-2   ">
+              <th scope="col" className="px-2 xs:hidden py-2   ">
                 STT
               </th>
               <th scope="col" className="px-2 py-2">
@@ -68,10 +68,16 @@ function History() {
                 Tổng tiên
               </th>
 
-              <th scope="col" className="px-2  py-2">
+              <th
+                scope="col"
+                className="px-2 md:hidden sm:hidden xs:hidden  py-2"
+              >
                 Trạng thái
               </th>
-              <th scope="col" className="px-2  py-2">
+              <th
+                scope="col"
+                className="px-2 md:hidden sm:hidden xs:hidden  py-2"
+              >
                 Thông tin đơn hàng
               </th>
 
@@ -90,7 +96,7 @@ function History() {
                     : "bg-white text-sm dark:border-neutral-500 border-b border-black dark:bg-neutral-600"
                 } `}
               >
-                <td className=" whitespace-nowrap px-2 py-2 border-black  border text-center">
+                <td className=" whitespace-nowrap xs:hidden px-2 py-2 border-black  border text-center">
                   {index + 1}
                 </td>
                 <td className="whitespace-nowrap px-2 py-2 border-black border  ">
@@ -129,10 +135,10 @@ function History() {
                     )} `}</span>
                   )}
                 </td>
-                <td className="whitespace-nowrap px-2 border-black  py-2 border text-center">
+                <td className="whitespace-nowrap px-2 sm:hidden xs:hidden md:hidden border-black  py-2 border text-center">
                   {item?.status}
                 </td>
-                <td className="whitespace-nowrap border-black  px-2 py-2 border text-center">
+                <td className="whitespace-nowrap border-black sm:hidden xs:hidden md:hidden  px-2 py-2 border text-center">
                   <div className="flex flex-col gap-1">
                     <div className="flex items-center gap-1">
                       <h2 className=" font-medium">Địa chỉ :</h2>

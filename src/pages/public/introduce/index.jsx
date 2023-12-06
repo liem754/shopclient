@@ -5,7 +5,7 @@ import banner3 from "../../../access/intro2.png";
 function Introduce() {
   return (
     <div className="flex flex-col justify-center items-center my-10">
-      <div className="w-4/5 flex flex-col items-center">
+      <div className="w-4/5 md:w-[80%] flex flex-col items-center">
         <h2 className=" text-3xl font-bold text-center">
           Chào mừng bạn đến với MOCA - Nơi thể hiện phong cách và cái đẹp của
           bạn!

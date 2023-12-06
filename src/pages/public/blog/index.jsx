@@ -26,7 +26,7 @@ function Blog() {
           <Link
             to={`/blog/${item?._id}`}
             key={item?._id}
-            className="flex cursor-pointer hover:scale-105 hover:border gap-2 h-[160px] border-b-2 pb-2 w-[80%]"
+            className="flex cursor-pointer hover:scale-105 hover:border gap-2 h-[160px] border-b-2 pb-2 w-[80%] md:w-[87%] sm:w-[95%] xs:w-[95%] "
           >
             <img src={item?.images[0]} alt="" className="w-[30%] h-full" />
             <div className="w-[68%]">

@@ -63,7 +63,7 @@ function Contact() {
           referrerpolicy="no-referrer-when-downgrade"
         />
       </div>
-      <div className="container w-4/5 my-24 mx-auto md:px-6">
+      <div className="container w-4/5  my-24 mx-auto md:px-6">
         <section className="mb-32">
           <div className="flex flex-wrap">
             <div className="mb-12 w-full shrink-0 grow-0 basis-auto md:mb-0 md:w-7/12 md:px-3 lg:px-6">

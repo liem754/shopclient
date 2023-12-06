@@ -47,21 +47,21 @@ function SideBarBlog() {
   }, [search]);
   return (
     <div className="flex flex-col gap-3 p-3">
-      <section className="border border-black flex justify-between items-center">
+      <section className="border sm:hidden border-black flex justify-between items-center">
         <input
           type="text"
           value={search}
           onChange={(e) => {
             setSearch(e.target.value);
           }}
-          className="p-2 w-[80%] "
+          className="p-2  w-[80%] sm:w-[70%] "
         />
         <Button
           Click={handle}
           text={<FaSearch />}
           textColor={"text-white"}
           bgColor={"bg-red-800"}
-          pd={"py-3 w-[20%]"}
+          pd={"py-3 w-[20%] sm:w-[30%]"}
           textCenter={" flex justify-center items-center"}
         />
       </section>
@@ -70,14 +70,14 @@ function SideBarBlog() {
           <Link
             to={`/blog/${item?._id}`}
             key={item?._id}
-            className="flex gap-2  border-b-2 pb-2  text-sm hover:underline hover:underline-offset-2 hover:text-red-500 cursor-pointer"
+            className="flex gap-2  border-b-2 pb-2 md:text-xs sm:text-xs  text-sm hover:underline hover:underline-offset-2 hover:text-red-500 cursor-pointer"
           >
             <h2>{item?.title}</h2>
           </Link>
         ))}
         <Link
           to={`/blog`}
-          className="flex gap-2  border-b-2 pb-2  text-sm hover:underline hover:underline-offset-2 hover:text-red-500 cursor-pointer"
+          className="flex gap-2  border-b-2 pb-2  md:text-xs sm:text-xs  text-sm hover:underline hover:underline-offset-2 hover:text-red-500 cursor-pointer"
         >
           <h2>Tất cả</h2>
         </Link>

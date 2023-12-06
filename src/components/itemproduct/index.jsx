@@ -89,16 +89,16 @@ function ItemProduct({ img, title, id, price, css }) {
       ) : (
         <>
           {data?.cart?.some((item) => item?.product.toString() === id) ? (
-            <div className="flex items-center justify-around w-full">
+            <div className="flex items-center  justify-around w-full">
               <Link
                 to={"/user/cart"}
-                className="py-1 px-3 bg-gray-200 hover:scale-[1.02]"
+                className="py-1 px-3 md:px-2 md:text-sm bg-gray-200 hover:scale-[1.02]"
               >
                 Đã thêm vào giỏ
               </Link>
               <h2
                 onClick={handleDelete}
-                className="py-1 px-3 bg-red-600 text-white rounded-md cursor-pointer hover:scale-105"
+                className="py-1 px-3 md:px-2 md:text-sm bg-red-600 text-white rounded-md cursor-pointer hover:scale-105"
               >
                 Xóa
               </h2>
@@ -109,7 +109,7 @@ function ItemProduct({ img, title, id, price, css }) {
               text={"Thêm vào giỏ hàng"}
               textColor={"text-red-900"}
               border={"border border-red-900"}
-              pd={"py-1 px-3"}
+              pd={"py-1 px-3 md:text-sm "}
               hover={"hover:bg-red-900 hover:text-white"}
             />
           )}

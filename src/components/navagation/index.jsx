@@ -23,7 +23,7 @@ function Navigation() {
   }, []);
   return (
     <div className=" flex justify-center items-center bg-black text-white ">
-      <nav className=" w-[75%] flex items-center gap-4 md:text-sm sm:hidden xs:hidden text-md font-medium">
+      <nav className=" w-[75%] md:w-[85%] flex items-center gap-4 md:text-sm sm:hidden xs:hidden text-md font-medium">
         <NavLink
           to={"/"}
           className={({ isActive }) =>

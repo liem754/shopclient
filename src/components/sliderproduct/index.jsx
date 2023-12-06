@@ -12,7 +12,7 @@ import "swiper/css/pagination";
 import "swiper/css/effect-coverflow";
 import { memo } from "react";
 import { ItemProduct, ProductReview } from "components";
-function SliderProduct({ list, d }) {
+function SliderProduct({ list, d, md, sm }) {
   return (
     <div className="w-full">
       <Swiper
@@ -22,7 +22,9 @@ function SliderProduct({ list, d }) {
 
         effect="cube"
         spaceBetween={10}
-        slidesPerView={d ? 4 : 2}
+        slidesPerView={
+          d && !md ? 4 : md && d && !sm ? 3 : d && sm && md ? 2 : 1
+        }
         coverflowEffect={{
           rotate: 50,
           stretch: 0,

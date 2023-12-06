@@ -44,7 +44,7 @@ function ProductReview({ img, title, id, price, css }) {
     <div
       onMouseEnter={() => setImage(1)}
       onMouseLeave={() => setImage(0)}
-      className={` ${css}  h-[380px] flex items-center cursor-pointer bg-white `}
+      className={` ${css}  h-[380px] md:h-[240px] sm:h-[300px] lg:h-[300px] flex items-center cursor-pointer bg-white `}
     >
       <Link
         to={`/${slugify(title, {
@@ -59,11 +59,16 @@ function ProductReview({ img, title, id, price, css }) {
         <h2 className=" w-full text-center text-md">{title}</h2>
         <span className="text-red-600">{VndFormat(price)}</span>
         {data?.cart?.some((item) => item?.product.toString() === id) ? (
-          <div className="flex items-center justify-around w-full">
-            <h2 className="py-1 px-3 bg-gray-200">Đã thêm vào giỏ</h2>
+          <div className="flex items-center flex-row md:flex-col md:gap-2 justify-around w-full">
+            <Link
+              to="/user/cart"
+              className="py-1 px-3 cursor-pointer hover:scale-105 md:text-sm md:px-2 bg-gray-200"
+            >
+              Đã thêm vào giỏ
+            </Link>
             <h2
               onClick={handleDelete}
-              className="py-1 px-3 bg-red-600 text-white rounded-md cursor-pointer hover:scale-105"
+              className="py-1 px-3 bg-red-600 text-white md:text-sm md:px-2 rounded-md cursor-pointer hover:scale-105"
             >
               Xóa
             </h2>
@@ -74,7 +79,7 @@ function ProductReview({ img, title, id, price, css }) {
             text={"Thêm vào giỏ hàng"}
             textColor={"text-red-900"}
             border={"border border-red-900"}
-            pd={"py-1 px-3"}
+            pd={"py-1 px-3 md:text-sm md:px-2"}
             hover={"hover:bg-red-900 hover:text-white"}
           />
         )}

@@ -81,7 +81,7 @@ function Cart() {
 
       {data?.cart?.length > 0 ? (
         data?.cart?.map((item, index) => (
-          <div className="flex gap-2 w-[80%] border-2 shadow-lg">
+          <div className="flex gap-2 w-[80%] md:w-[100%] sm:w-[100%] xs:w-[100%] border-2 shadow-lg">
             <img
               src={item?.thumb}
               alt=""

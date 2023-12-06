@@ -54,7 +54,7 @@ function Home() {
     <div className="">
       <Slider list={list} />
       <div className="flex flex-col justify-center items-center py-10 gap-9">
-        <section className=" w-[75%] flex justify-between items-center">
+        <section className=" w-[75%] md:w-[80%] sm:w-[90%] xs:w-[90%] flex justify-between items-center">
           <img
             src={bn3}
             alt=""
@@ -71,7 +71,7 @@ function Home() {
             className="w-[30%] hover:scale-105 cursor-pointer transition delay-75"
           />
         </section>
-        <section className="w-[75%] mt-10">
+        <section className="w-[75%] md:w-[80%] sm:w-[90%] xs:w-[90%] mt-10">
           <h1 className="border-dashed font-semibold text-xl border-2 border-indigo-600 p-2 flex items-center gap-2">
             <PiHandbagDuotone size={"30px"} />
             <p>SẢN PHẨM CỦA CHÚNG TÔI</p>
@@ -79,7 +79,7 @@ function Home() {
           <div className="flex items-center flex-wrap gap-6 my-10">
             {products?.products?.map((item, index) => (
               <div
-                className="w-[23%]"
+                className="w-[23%] lg:w-[30%] md:w-[30%] sm:w-[45%] xs:w-[98%]"
                 data-aos="fade-up"
                 data-aos-delay={`${index * 200}`}
                 key={index}
@@ -96,7 +96,7 @@ function Home() {
         </section>
       </div>
       <div className="mt-10 bg-[#4e1e2a] flex flex-col justify-center items-center py-10 mb-10 gap-9">
-        <section className="w-[75%]">
+        <section className="w-[75%] md:w-[80%] sm:w-[90%] xs:w-[90%]">
           <h1 className="border-dashed text-yellow-500 font-semibold text-xl border-2 border-white p-3 flex items-center gap-2">
             <IoIosGift size={"30px"} />
             <p className="">SẢN PHẨM NỔI BẬC</p>
@@ -118,7 +118,7 @@ function Home() {
         />
       </div>
       <div className="mt-2 flex flex-col justify-center items-center py-10 mb-10 gap-9">
-        <section className="w-[75%]">
+        <section className="w-[75%] md:w-[80%] sm:w-[90%] xs:w-[90%]">
           <h1 className="border-dashed font-semibold text-xl border-2 border-blue-700 p-3 flex items-center gap-2">
             <IoIosGift size={"30px"} />
             <p className="">TIN TỨC</p>
@@ -128,7 +128,7 @@ function Home() {
               <Link
                 to={`/blog/${item?._id}`}
                 key={item?._id}
-                className="w-[30%] h-[570px]"
+                className="w-[30%] md:w-[48%] sm:w-[47%] xs:w-[97%] h-[570px]"
               >
                 <BlogItem
                   img={item?.images[0]}

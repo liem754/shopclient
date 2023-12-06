@@ -61,7 +61,7 @@ function Header() {
     <header className="all ">
       <div className="main w-[75%] lg:w-[85%] sm:w-[90%] xs:w-[90%] md:w-[90%]">
         <section
-          className=" w-[15%] sm:w-[35%] md:w-[25%] xs:w-[37%]"
+          className=" w-[15%] sm:w-[33%] md:w-[25%] xs:w-[37%]"
           onClick={() => navigate("/")}
         >
           <img src={logo} alt="" className="image w-[70%]" />
@@ -107,48 +107,69 @@ function Header() {
           )}
 
           {show && (
-            <div className=" bg-black p-5 rounded-md text-white absolute top-[115%] -left-[200px] z-10 w-[250px]  justify-end items-center ">
+            <div
+              onBlur={() => setShow(false)}
+              className=" bg-black p-5 rounded-md text-white absolute top-[115%] -left-[200px] z-10 w-[250px]  justify-end items-center "
+            >
               {isLogginned ? (
                 <div className="flex flex-col  gap-4">
-                  <Link
-                    to={`/user/information`}
-                    className="flex items-center hover:text-red-400 hover:underline hover:underline-offset-4  gap-2 relative "
+                  <div
+                    onClick={() => {
+                      setShow(false);
+                      navigate("/user/information");
+                    }}
+                    className="flex items-center cursor-pointer hover:text-red-400 hover:underline hover:underline-offset-4  gap-2 relative "
                   >
                     <FaRegUserCircle />
                     <span>Thông tin tài khoản</span>
-                  </Link>
-                  <Link
-                    to={"/user/cart"}
+                  </div>
+                  <div
+                    onClick={() => {
+                      setShow(false);
+                      navigate("/user/cart");
+                    }}
                     className="flex items-center gap-2 hover:text-red-400 cursor-pointer hover:underline hover:underline-offset-4 "
                   >
                     <BsBag />
                     <h2 className=" ">Giỏ hàng</h2>
-                  </Link>
-                  <Link
-                    to={"/"}
+                  </div>
+                  <div
+                    onClick={() => {
+                      setShow(false);
+                      navigate("/");
+                    }}
                     className={
-                      "items-center gap-1 flex  hover:text-red-400 hover:underline hover:underline-offset-4 "
+                      "items-center gap-1 flex cursor-pointer  hover:text-red-400 hover:underline hover:underline-offset-4 "
                     }
                   >
                     <IoHomeSharp />
                     <span>Trang chủ</span>
-                  </Link>
-                  <Link className=" flex hove items-center gap-1   hover:text-red-400 hover:underline hover:underline-offset-4  cursor-pointer">
+                  </div>
+                  <div
+                    onClick={() => {
+                      setShow(false);
+                      navigate("/product/Áo%20Thun%20Nữ");
+                    }}
+                    className=" flex hove items-center gap-1   hover:text-red-400 hover:underline hover:underline-offset-4  cursor-pointer"
+                  >
                     <PiShirtFolded />
                     <p>Sản phẩm</p>
-                  </Link>
+                  </div>
 
                   {navi?.map((item, index) => (
-                    <Link
+                    <div
                       className={
-                        "items-center gap-1 flex  hover:text-red-400 hover:underline hover:underline-offset-4 "
+                        "items-center gap-1 flex cursor-pointer  hover:text-red-400 hover:underline hover:underline-offset-4 "
                       }
                       key={index}
-                      to={item?.link}
+                      onClick={() => {
+                        setShow(false);
+                        navigate(`${item?.link}`);
+                      }}
                     >
                       {item?.icon}
                       <span>{item?.value}</span>
-                    </Link>
+                    </div>
                   ))}
                   <Button
                     Click={() => {
