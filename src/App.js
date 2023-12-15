@@ -15,6 +15,7 @@ import {
 } from "./pages/public";
 import LayoutProduct from "pages/public/layoutproduct";
 import { Cart, History, Information, LayoutUser } from "pages/user";
+import PaymentComponent from "pages/public/vnpay";
 function App() {
   return (
     <div className="App">
@@ -27,7 +28,7 @@ function App() {
 
         <Route path={path.PUBLIC} element={<DefaultLayOut />}>
           <Route path={path.LOGIN} element={<Login />} />
-          <Route path={path.PAY} element={<Pay />} />
+          <Route path={path.PAY} element={<PaymentComponent />} />
 
           <Route path={path.HOME} element={<Home />} />
           <Route path={path.INTRODUTE} element={<Introduce />} />

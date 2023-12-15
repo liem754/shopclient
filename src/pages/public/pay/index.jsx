@@ -196,14 +196,6 @@ function Pay() {
           <div className="border-t-2 w-full flex justify-center pt-7">
             {iss ? (
               <Paypal
-                payload={{
-                  products: data?.cart,
-                  total: Math.round(
-                    +data?.cart?.reduce((sum, item) => +item.price + sum, 0) /
-                      23500
-                  ),
-                  address: payload?.address,
-                }}
                 setIsSuccess={setIsSuccess}
                 amount={Math.round(
                   +data?.cart?.reduce((sum, item) => +item.price + sum, 0) /

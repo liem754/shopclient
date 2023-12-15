@@ -57,6 +57,7 @@ function Header() {
       clearTimeout(time);
     };
   }, [isLogginned]);
+  console.log(han);
   return (
     <header className="all ">
       <div className="main w-[75%] lg:w-[85%] sm:w-[90%] xs:w-[90%] md:w-[90%]">
